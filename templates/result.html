@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Prediction Result</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+<div class="page-container">
+<div class="page-box">
+
+<div class="page-header">
+  <h1>Diabetes Prediction Result</h1>
+  <p>AI-based medical risk assessment</p>
+</div>
+
+<div class="result-card {{ risk_level }}">
+  <h2>{{ result_text }}</h2>
+  <p><strong>{{ probability }}%</strong> Probability</p>
+  <p>Risk Level: <strong>{{ risk }}</strong></p>
+</div>
+
+<div class="clinical-data">
+  <h3>Input Parameters</h3>
+  <div class="data-grid">
+    <div class="data-item">
+      <div class="data-label">BMI</div>
+      <div class="data-value">{{ bmi }}<span class="data-unit">kg/m²</span></div>
+    </div>
+    <div class="data-item">
+      <div class="data-label">Glucose</div>
+      <div class="data-value">{{ glucose }}<span class="data-unit">mg/dL</span></div>
+    </div>
+    <div class="data-item">
+      <div class="data-label">Age</div>
+      <div class="data-value">{{ age }}<span class="data-unit">years</span></div>
+    </div>
+    {% if insulin > 0 %}
+    <div class="data-item">
+      <div class="data-label">Insulin</div>
+      <div class="data-value">{{ insulin }}<span class="data-unit">μU/mL</span></div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<div class="button-row">
+  <a href="/analysis?probability={{ probability }}&bmi={{ bmi }}&glucose={{ glucose }}&age={{ age }}&insulin={{ insulin }}&pregnancies={{ pregnancies }}&blood_pressure={{ blood_pressure }}&skin_thickness={{ skin_thickness }}&dpf={{ dpf }}"
+     class="btn btn-primary">
+    View Detailed Analysis
+  </a>
+</div>
+
+<a class="back-link" href="/">Back to Home</a>
+
+</div>
+</div>
+</body>
+</html>

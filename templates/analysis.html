@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Detailed Analysis</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="page-container">
+<div class="page-box">
+
+<div class="page-header">
+  <h1>Visual Explanation of Prediction</h1>
+  <p>Risk Probability: {{ probability }}% | Risk Level: {{ risk_text }}</p>
+</div>
+
+<!-- Clinical Data Summary -->
+<div class="clinical-data">
+  <h3>Patient Clinical Parameters</h3>
+  <div class="data-grid">
+    <div class="data-item">
+      <div class="data-label">BMI</div>
+      <div class="data-value">{{ bmi }}<span class="data-unit">kg/m²</span></div>
+    </div>
+    <div class="data-item">
+      <div class="data-label">Glucose</div>
+      <div class="data-value">{{ glucose }}<span class="data-unit">mg/dL</span></div>
+    </div>
+    <div class="data-item">
+      <div class="data-label">Age</div>
+      <div class="data-value">{{ age }}<span class="data-unit">years</span></div>
+    </div>
+    <div class="data-item">
+      <div class="data-label">Insulin</div>
+      <div class="data-value">{{ insulin }}<span class="data-unit">μU/mL</span></div>
+    </div>
+    {% if pregnancies > 0 %}
+    <div class="data-item">
+      <div class="data-label">Pregnancies</div>
+      <div class="data-value">{{ pregnancies }}</div>
+    </div>
+    {% endif %}
+    {% if blood_pressure > 0 %}
+    <div class="data-item">
+      <div class="data-label">Blood Pressure</div>
+      <div class="data-value">{{ blood_pressure }}<span class="data-unit">mmHg</span></div>
+    </div>
+    {% endif %}
+    {% if skin_thickness > 0 %}
+    <div class="data-item">
+      <div class="data-label">Skin Thickness</div>
+      <div class="data-value">{{ skin_thickness }}<span class="data-unit">mm</span></div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<!-- Two Charts Section -->
+<div class="analysis-section">
+  <div class="chart-box">
+    <h3>Risk Score Gauge</h3>
+    <div class="chart-container">
+      <canvas id="riskGauge"></canvas>
+    </div>
+  </div>
+  
+  <div class="chart-box">
+    <h3>Feature Comparison</h3>
+    <div class="chart-container">
+      <canvas id="featureBar"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- Optional: Third chart area (uncomment if needed) -->
+<!--
+<div class="chart-box" style="margin-top: 30px;">
+  <h3>Risk Distribution</h3>
+  <div class="chart-container">
+    <canvas id="riskPie"></canvas>
+  </div>
+</div>
+-->
+
+<div class="download-row">
+  <button onclick="window.print()" class="btn-download">Download PDF Report</button>
+</div>
+
+<a class="back-link" href="/">Back to Home</a>
+
+</div>
+</div>
+
+<script src="{{ url_for('static', filename='scripts/charts.js') }}"></script>
+</body>
+</html>

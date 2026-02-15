@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Detailed Prediction</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+<div class="page-container">
+<div class="page-box">
+
+<div class="page-header">
+  <h1>Detailed Prediction</h1>
+  <p>Enter all medical parameters for comprehensive assessment</p>
+</div>
+
+<form action="/predict">
+<div class="form-grid">
+  
+  <div class="form-group">
+    <label>Pregnancies <span class="range-info">0-10</span></label>
+    <input type="number" name="preg" min="0" max="10" placeholder="Number of pregnancies" required>
+  </div>
+  
+  <div class="form-group">
+    <label>Glucose Level <span class="range-info">50-300 mg/dL</span></label>
+    <input type="number" name="glucose" min="50" max="300" placeholder="Glucose level" required>
+  </div>
+  
+  <div class="form-group">
+    <label>Blood Pressure <span class="range-info">40-150 mmHg</span></label>
+    <input type="number" name="bp" min="40" max="150" placeholder="Blood pressure" required>
+  </div>
+  
+  <div class="form-group">
+    <label>Skin Thickness <span class="range-info">0-100 mm</span></label>
+    <input type="number" name="skin" min="0" max="100" placeholder="Skin thickness" required>
+  </div>
+  
+  <div class="form-group">
+    <label>Insulin Level <span class="range-info">0-900 μU/mL</span></label>
+    <input type="number" name="insulin" min="0" max="900" placeholder="Insulin level" required>
+  </div>
+  
+  <div class="form-group">
+    <label>BMI <span class="range-info">10-70 kg/m²</span></label>
+    <input type="number" step="0.1" name="bmi" min="10" max="70" placeholder="Body mass index" required>
+  </div>
+  
+  <div class="form-group">
+    <label>Diabetes Pedigree <span class="range-info">0.0-2.5</span></label>
+    <input type="number" step="0.01" name="dpf" min="0" max="2.5" placeholder="DPF" required>
+  </div>
+  
+  <div class="form-group">
+    <label>Age <span class="range-info">10-100 years</span></label>
+    <input type="number" name="age" min="10" max="100" placeholder="Age" required>
+  </div>
+  
+</div>
+
+<div class="button-row">
+  <button class="btn btn-primary">Predict Diabetes Risk</button>
+</div>
+</form>
+
+<a class="back-link" href="/choice">Back to Prediction Type</a>
+
+</div>
+</div>
+</body>
+</html>
